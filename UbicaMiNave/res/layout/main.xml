@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
-</LinearLayout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent" 
+                android:layout_height="wrap_content"
+                android:background="@drawable/background"
+                android:padding="10px" >
+                  
+    <ImageButton
+      android:background="@null"
+      android:id="@+id/ButtonSign"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:width="80px"
+      android:height="64px"
+      android:src="@drawable/sign" />
+            
+</RelativeLayout>
