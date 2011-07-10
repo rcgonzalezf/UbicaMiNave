@@ -6,6 +6,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -17,15 +18,26 @@ public class MapViewActivity extends MapActivity {
 	private MapView mapView;
 	private LocationManager locationManager;
 	private RelativeLayout linearLayout;
-	
-    /** Called when the activity is first created. */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        
-     linearLayout = (RelativeLayout) findViewById(R.id.mapViewlayout);
+
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.map_view);
+
+		linearLayout = (RelativeLayout) findViewById(R.id.mapViewlayout);
+
 		mapView = (MapView) findViewById(R.id.mapview);
+		
+		if(mapView == null){
+			Toast.makeText(getApplicationContext(), "No se encontro el GMaps API", Toast.LENGTH_SHORT);
+		}else{
+			mapSetUp();
+		}
+
+	}
+	
+	private void mapSetUp(){
 		mapView.setBuiltInZoomControls(true);
 		mapView.setStreetView(true);
 		mapController = mapView.getController();
@@ -33,10 +45,9 @@ public class MapViewActivity extends MapActivity {
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
 				0, new GeoUpdateHandler());
-        
-    }
-    
-    @Override
+	}
+
+	@Override
 	protected boolean isRouteDisplayed() {
 		return false;
 	}

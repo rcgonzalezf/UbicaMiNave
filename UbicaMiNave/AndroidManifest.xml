@@ -13,6 +13,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity android:name=".MapViewActivity"
+        android:label="@string/app_name"></activity>
         <uses-library android:required="true" android:name="com.google.android.maps"></uses-library>
 
     </application>

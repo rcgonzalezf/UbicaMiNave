@@ -1,13 +1,17 @@
 package com.dev52.main.view;
 
 import android.app.Activity;
-import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 
 public class UbicaMiNaveActivity extends Activity {
+	
+	private static String tag = "UbicaMiNaveActivity";
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -18,8 +22,13 @@ public class UbicaMiNaveActivity extends Activity {
         final ImageButton imageButton = (ImageButton) findViewById(R.id.ButtonSign);
         imageButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                //TODO Change current view
-                setContentView(R.layout.map_view);
+            	Intent intent = new Intent(UbicaMiNaveActivity.this, MapViewActivity.class);
+            	try{
+                startActivity(intent);
+            	}catch(Exception e){
+            		e.printStackTrace();
+            		Log.d(tag, e.getMessage());
+            	}
             }
         });
     }
