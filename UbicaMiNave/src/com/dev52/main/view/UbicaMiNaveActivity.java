@@ -19,7 +19,7 @@ public class UbicaMiNaveActivity extends Activity {
         imageButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 //TODO Change current view
-                setContentView(R.layout.next);
+                setContentView(R.layout.map_view);
             }
         });
     }
