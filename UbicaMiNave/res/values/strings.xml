@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Ubica Mi Nave</string>
+    
+    <string name="overlayItem_title">Hello Dude!</string>
+    <string name="overlayItem_message">I\'ll wait here for you!</string>
+    
 </resources>
