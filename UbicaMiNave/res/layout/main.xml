@@ -4,14 +4,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/background"
                 android:padding="10px" >
-                  
-    <ImageButton
-      android:background="@null"
-      android:id="@+id/ButtonSign"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:width="80px"
-      android:height="64px"
-      android:src="@drawable/sign" />
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/ubicameButton" android:layout_toRightOf="@+id/aquiEstoyButton" android:layout_alignTop="@+id/aquiEstoyButton" android:layout_alignBottom="@+id/aquiEstoyButton" android:text="Ubícame"></Button>
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/salirButton" android:layout_toRightOf="@+id/ubicameButton" android:layout_alignTop="@+id/ubicameButton" android:layout_alignBottom="@+id/ubicameButton" android:text="Salir"></Button>
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/aquiEstoyButton" android:text="Aquí estoy" android:layout_alignParentBottom="true"></Button>
             
 </RelativeLayout>

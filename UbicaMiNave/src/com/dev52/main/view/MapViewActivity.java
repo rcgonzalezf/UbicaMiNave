@@ -5,9 +5,13 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.dev52.main.map.utils.LocationUtils;
+import com.dev52.main.map.utils.MyCarLocationListener;
+import com.dev52.model.UserSession;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
@@ -41,10 +45,16 @@ public class MapViewActivity extends MapActivity {
 		mapView.setBuiltInZoomControls(true);
 		mapView.setStreetView(true);
 		mapController = mapView.getController();
-		mapController.setZoom(14); // Zoom 1 is world view
-		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
-				0, new GeoUpdateHandler());
+		mapController.setZoom(LocationUtils.ZOOM_LEVEL); // Zoom 1 is world view
+		
+		Location currentLocation = UserSession.getUserSession().getLocation();
+		
+		int latitudeE6 = (int) (currentLocation.getLatitude() * 1e6 ); // Qro. points 20581367;
+		int longitudeE6 =(int) (currentLocation.getLongitude() * 1e6 ); // Qro. points -100371094; 
+		
+		GeoPoint geoPoint = new GeoPoint(latitudeE6, longitudeE6);
+		
+		mapController.animateTo(geoPoint);
 	}
 
 	@Override
@@ -52,26 +62,4 @@ public class MapViewActivity extends MapActivity {
 		return false;
 	}
 
-	public class GeoUpdateHandler implements LocationListener {
-
-		@Override
-		public void onLocationChanged(Location location) {
-			int lat = (int) (location.getLatitude());
-			int lng = (int) (location.getLongitude());
-			GeoPoint point = new GeoPoint(lat, lng);
-			mapController.animateTo(point); //	mapController.setCenter(point);
-		}
-
-		@Override
-		public void onProviderDisabled(String provider) {
-		}
-
-		@Override
-		public void onProviderEnabled(String provider) {
-		}
-
-		@Override
-		public void onStatusChanged(String provider, int status, Bundle extras) {
-		}
-	}
 }
