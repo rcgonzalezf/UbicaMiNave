@@ -9,6 +9,11 @@ import android.graphics.drawable.Drawable;
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.OverlayItem;
 
+/**
+ * Based on http://developer.android.com/resources/tutorials/views/hello-mapview.html 
+ * @author rgonzalez
+ *
+ */
 public class CarItemizedOverlay extends ItemizedOverlay<OverlayItem> {
 
 	private ArrayList<OverlayItem> mOverlays = new ArrayList<OverlayItem>();

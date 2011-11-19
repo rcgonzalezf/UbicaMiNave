@@ -2,7 +2,13 @@ package com.dev52.main.map.utils;
 
 import android.location.Location;
 
-
+/**
+ * isBetterLocation() and isSameProvider() methods are based on:
+ * http://developer.android.com/guide/topics/location/obtaining-user-location.html
+ * 
+ * @author rgonzalez
+ *
+ */
 public class LocationUtils {
 	private static final int TWO_MINUTES = 1000 * 60 * 2;
 	

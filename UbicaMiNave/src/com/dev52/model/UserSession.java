@@ -8,6 +8,11 @@ import android.content.ContentResolver;
 import android.location.Location;
 import android.provider.Settings.Secure;
 
+/**
+ * Singleton Object to handle the UserSession values.
+ * @author rgonzalez
+ *
+ */
 public class UserSession implements Serializable {
 
 	/**

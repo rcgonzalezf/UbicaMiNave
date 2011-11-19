@@ -2,7 +2,14 @@
 <resources>
     <string name="app_name">Ubica Mi Nave</string>
     
+    
+    <string name="home_calculatingLocation">We\'re calculating your location, please try again!</string>
+    
     <string name="overlayItem_title">Hello Dude!</string>
-    <string name="overlayItem_message">I\'ll wait here for you!</string>
+    <string name="overlayItem_message">I\'ll wait here for you: %s</string>
+    
+    <string name="map_pleaseWait">Please wait...</string>
+    <string name="map_retrievingAddress">We are retrieving the address!</string>
+    
     
 </resources>

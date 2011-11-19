@@ -1,6 +1,7 @@
 package com.dev52.main.view;
 
-import com.dev52.main.map.utils.MyCarLocationListener;
+import com.dev52.main.map.utils.CarLocationListener;
+import com.dev52.model.UserSession;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,7 +11,13 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
+/**
+ * Main activity
+ * @author rgonzalez
+ *
+ */
 public class UbicaMiNaveActivity extends Activity {
 	
 	private static String tag = "UbicaMiNaveActivity";
@@ -19,7 +26,7 @@ public class UbicaMiNaveActivity extends Activity {
 	
 	private LocationManager locationManager;
 	
-	private MyCarLocationListener locationListener;
+	private CarLocationListener locationListener;
 	
     /** Called when the activity is first created. */
     @Override
@@ -30,7 +37,7 @@ public class UbicaMiNaveActivity extends Activity {
         
         locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
         
-        locationListener = new MyCarLocationListener(); 
+        locationListener = new CarLocationListener(); 
         
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
 
@@ -38,11 +45,19 @@ public class UbicaMiNaveActivity extends Activity {
         
  
         aquiEstoyButton = (Button) findViewById(R.id.aquiEstoyButton);
+        
         aquiEstoyButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
             	Intent intent = new Intent(UbicaMiNaveActivity.this, MapViewActivity.class);
             	try{
-                startActivity(intent);
+            		UserSession userSession = UserSession.getUserSession();
+            		
+            		if(userSession.getLocation() == null){
+            			Toast.makeText(getBaseContext(), getString(R.string.overlayItem_message), Toast.LENGTH_LONG);
+            		}else{
+            			startActivity(intent);	
+            		}
+            		
             	}catch(Exception e){
             		e.printStackTrace();
             		Log.d(tag, e.getMessage());
