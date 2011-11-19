@@ -2,19 +2,13 @@ package com.dev52.main.view;
 
 import java.util.List;
 
-import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.dev52.main.map.utils.CarItemizedOverlay;
 import com.dev52.main.map.utils.LocationUtils;
-import com.dev52.main.map.utils.MyCarLocationListener;
 import com.dev52.model.UserSession;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -26,16 +20,12 @@ import com.google.android.maps.OverlayItem;
 public class MapViewActivity extends MapActivity {
 	private MapController mapController;
 	private MapView mapView;
-	private LocationManager locationManager;
-	private RelativeLayout linearLayout;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.map_view);
-
-		linearLayout = (RelativeLayout) findViewById(R.id.mapViewlayout);
 
 		mapView = (MapView) findViewById(R.id.mapview);
 		

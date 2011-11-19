@@ -17,6 +17,10 @@ public class UbicaMiNaveActivity extends Activity {
 	
 	private Button aquiEstoyButton;
 	
+	private LocationManager locationManager;
+	
+	private MyCarLocationListener locationListener;
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,9 +28,9 @@ public class UbicaMiNaveActivity extends Activity {
         
         setContentView(R.layout.main);
         
-        LocationManager locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
+        locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
         
-        MyCarLocationListener locationListener = new MyCarLocationListener(); 
+        locationListener = new MyCarLocationListener(); 
         
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
 
@@ -46,4 +50,5 @@ public class UbicaMiNaveActivity extends Activity {
             }
         });
     }
+    
 }
